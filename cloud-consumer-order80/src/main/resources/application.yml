@@ -1,0 +1,17 @@
+server:
+  port: 80
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    # 默认 true 可省略
+    register-with-eureka: false
+    # 默认 true 可省略
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/ #集群
+
+spring:
+  application:
+    name: cloud-order-service
