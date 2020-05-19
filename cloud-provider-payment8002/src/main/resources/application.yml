@@ -17,6 +17,7 @@ mybatis:
 eureka:
   instance:
     prefer-ip-address: true
+    instance-id: payment8002
   client:
     # 默认 true 可省略
     register-with-eureka: true
