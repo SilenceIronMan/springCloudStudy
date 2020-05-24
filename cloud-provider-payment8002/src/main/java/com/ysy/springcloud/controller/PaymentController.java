@@ -7,9 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Objects;
 
@@ -54,7 +56,7 @@ public class PaymentController {
     }
 
     @GetMapping("/discovery")
-    public Object discovery(){
+    public Object discovery() {
         List<String> services = discoveryClient.getServices();
         for (String element : services) {
             log.info(element);
@@ -67,7 +69,9 @@ public class PaymentController {
     }
 
     @RequestMapping("/lb")
-    public String getPaymentLb() {
+    public String getPaymentLb(HttpServletRequest request) {
+        // 测试gateway 过滤器是否生效
+        System.out.println(request.getHeader("NewHeader"));
         return serverPort;
     }
 
