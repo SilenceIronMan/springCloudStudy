@@ -10,4 +10,4 @@ eureka:
 #    service-url:
 #      defaultZone: http://eureka7002.com:7002/eureka/
     service-url:
-      defaultZone: http://eureka70021.com:7001/eureka/ #单机版
+      defaultZone: http://eureka7001.com:7001/eureka/ #单机版
