@@ -11,10 +11,10 @@ eureka:
 #      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka # 节约时间 不开启集群
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: hystrix.stream,health,info
-#      base-path: /
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream,health,info
+      base-path: /
 
