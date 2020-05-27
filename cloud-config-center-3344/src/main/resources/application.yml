@@ -11,6 +11,12 @@ spring:
           search-paths: # 搜索目录
             - springcloud-config
       label: master #分支
+#rabbitMq配置  5627 mq 访问端口  15672 是web管理界面
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 #Eureka 注册地址
 eureka:
@@ -18,3 +24,9 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/
 
+#暴露bus刷新接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
