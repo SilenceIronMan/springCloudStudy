@@ -6,12 +6,12 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @anthor silenceYin
- * @date 2020/5/28 - 0:21
+ * @date 2020/5/28 - 0:59
  */
 @SpringBootApplication
 @EnableEurekaClient
-public class StreamMQMain8801 {
+public class StreamMQMain8803 {
     public static void main(String[] args) {
-        SpringApplication.run(StreamMQMain8801.class, args);
+        SpringApplication.run(StreamMQMain8803.class, args);
     }
 }
