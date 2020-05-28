@@ -1,6 +1,5 @@
 package com.ysy.springcloud.lb;
 
-import org.springframework.beans.propertyeditors.CurrencyEditor;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.stereotype.Component;
 

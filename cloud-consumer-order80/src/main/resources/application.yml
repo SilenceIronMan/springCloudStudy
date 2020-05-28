@@ -10,8 +10,13 @@ eureka:
     # 默认 true 可省略
     fetch-registry: true
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/ #集群
+     #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/ #集群
+      defaultZone: http://eureka7001.com:7001/eureka/ #单机
 
 spring:
   application:
     name: cloud-order-service
+  # 采样值介于0到1之间,1 表示全部采集 一般为0.5
+  sleuth:
+    sampler:
+      probability: 1.0

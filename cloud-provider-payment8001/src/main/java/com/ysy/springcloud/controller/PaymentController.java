@@ -83,4 +83,9 @@ public class PaymentController {
         return serverPort;
     }
 
+    @RequestMapping("/zipkin")
+    public String getPaymentZipkin() {
+        return "it's a payment zipkin test!! congratulation!";
+    }
+
 }

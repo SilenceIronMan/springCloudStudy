@@ -57,7 +57,7 @@ public class OrderController {
     }
 
 
-    @RequestMapping("/payment//lb")
+    @RequestMapping("/payment/lb")
     public String getPaymentLb() {
         List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
         if (Objects.isNull(instances) || instances.isEmpty()) {
@@ -67,5 +67,10 @@ public class OrderController {
         URI uri = serviceInstance.getUri();
 
         return restTemplate.getForObject(uri, String.class);
+    }
+
+    @RequestMapping("/payment/zipkin")
+    public String getPaymentZipkin() {
+        return restTemplate.getForObject(PAYMENT_URL + "/payment/zipkin", String.class);
     }
 }

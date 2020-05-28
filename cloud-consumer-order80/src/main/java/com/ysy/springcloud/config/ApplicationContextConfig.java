@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 public class ApplicationContextConfig {
 
     @Bean
-    // @LoadBalanced (采用自定义的轮询算法)
+    @LoadBalanced // 如果采用自定义注释这个
     public RestTemplate getRestTemplate() {
         return new RestTemplate();
     }
