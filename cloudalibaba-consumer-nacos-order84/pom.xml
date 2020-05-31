@@ -11,7 +11,13 @@
 
     <artifactId>cloudalibaba-consumer-nacos-order84</artifactId>
 
+
     <dependencies>
+        <!--openfeign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
         <!--引入自定义api通用包-->
         <dependency>
             <groupId>com.ysy.springcloud</groupId>

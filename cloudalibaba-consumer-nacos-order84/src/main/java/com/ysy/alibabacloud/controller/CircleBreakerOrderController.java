@@ -2,6 +2,7 @@ package com.ysy.alibabacloud.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.ysy.alibabacloud.service.PaymentService;
 import com.ysy.springcloud.entities.CommonResult;
 import com.ysy.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
@@ -58,4 +59,17 @@ public class CircleBreakerOrderController {
         Payment payment = new Payment(id, null);
         return new CommonResult<>(445, "限流處理 blockHandler,exception 内容" + e.getMessage(), payment);
     }
+
+
+    // openFeign 調用
+
+    @Resource
+    private PaymentService paymentService;
+
+    @GetMapping(value = "/consumer/paymentSQL/{id}")
+    public CommonResult<Payment> openFignPaymentSQL(@PathVariable("id") Long id) {
+        CommonResult<Payment> result = paymentService.paymentSQL(id);
+        return result;
+    }
+
 }

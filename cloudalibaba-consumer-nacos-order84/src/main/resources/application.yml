@@ -17,3 +17,8 @@ spring:
 # 消费者访问的微服务名称(Nacos 中微服务名称)
 service-url:
   nacos-user-service: http://nacos-payment-provider #只是单纯的用户属性
+
+# 激活sentinel 對feign 的支持
+feign:
+  sentinel:
+    enabled: true
