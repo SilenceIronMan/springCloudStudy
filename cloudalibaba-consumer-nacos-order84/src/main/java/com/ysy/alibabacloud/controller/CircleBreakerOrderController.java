@@ -1,6 +1,7 @@
 package com.ysy.alibabacloud.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.ysy.springcloud.entities.CommonResult;
 import com.ysy.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +31,9 @@ public class CircleBreakerOrderController {
 
 
     @GetMapping(value = "/consumer/fallback/{id}")
-    @SentinelResource(value = "fallback", fallback = "handlerFallback")
+    //@SentinelResource(value = "fallback", fallback = "handlerFallback")
+    //@SentinelResource(value = "fallback", blockHandler = "blockHandler")
+    @SentinelResource(value = "fallback", fallback = "handlerFallback", blockHandler = "blockHandler", exceptionsToIgnore = IllegalArgumentException.class)
     public CommonResult<Payment> echo(@PathVariable("id") Long id) {
         CommonResult<Payment> result = restTemplate.exchange(serviceURL + "/paymentSQL/" + id, HttpMethod.GET,
                 null, new ParameterizedTypeReference<CommonResult<Payment>>() {
@@ -48,5 +51,11 @@ public class CircleBreakerOrderController {
     public CommonResult<Payment> handlerFallback(Long id, Throwable e) {
         Payment payment = new Payment(id, null);
         return new CommonResult<>(444, "异常处理handlerFallback,exception 内容" + e.getMessage(), payment);
+    }
+
+    // blockHandler (若2者有交集 則 blockHandler 優先級高)
+    public CommonResult<Payment> blockHandler(Long id, BlockException e) {
+        Payment payment = new Payment(id, null);
+        return new CommonResult<>(445, "限流處理 blockHandler,exception 内容" + e.getMessage(), payment);
     }
 }
