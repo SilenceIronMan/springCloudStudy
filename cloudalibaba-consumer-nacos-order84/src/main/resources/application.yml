@@ -1,0 +1,19 @@
+server:
+  port: 84
+spring:
+  application:
+    name: nacos-order-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 129.211.93.117:1111  #nginx 映射 Linux Nacos集群地址
+    sentinel:
+      transport:
+        # 配置sentinel dashboard地址
+        dashboard: localhost:8080
+        # 默认8719端口,加入被占用会自动从8719开始依次+1扫描,直到找到未被占用的端口
+        port: 8719
+
+# 消费者访问的微服务名称(Nacos 中微服务名称)
+service-url:
+  nacos-user-service: http://nacos-payment-provider #只是单纯的用户属性
