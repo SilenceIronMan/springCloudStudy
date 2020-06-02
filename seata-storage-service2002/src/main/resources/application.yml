@@ -1,0 +1,35 @@
+server:
+  port: 2002
+
+spring:
+  application:
+    name: seata-storage-service
+  cloud:
+    alibaba:
+      seata:
+        # 自定义事务组名称需要与seata-server中的对应
+        tx-service-group: ysy_tx_group
+    nacos:
+      discovery:
+        server-addr: 129.211.93.117:1111
+  datasource:
+    # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # mysql驱动类
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://129.211.93.117:12345/seata_storage?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+
+logging:
+  level:
+    io:
+      seata: info
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.ysy.springcloud.domain    # 所有Entity别名类所在包
+
+
+
